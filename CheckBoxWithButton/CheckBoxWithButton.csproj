@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{368C4DBD-0F5B-4597-99AD-88A1966E3516}</ProjectGuid>
+    <ProjectGuid>{96E9DDB3-961E-4687-8ADB-4B01053964FD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Invoices</RootNamespace>
-    <AssemblyName>Invoices</AssemblyName>
+    <RootNamespace>CheckBoxWithButton</RootNamespace>
+    <AssemblyName>CheckBoxWithButton</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,14 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,21 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MessageBox.xaml.cs">
-      <DependentUpon>MessageBox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\strings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>strings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="RounderProgressBarControl.xaml.cs">
-      <DependentUpon>RounderProgressBarControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewMenager.cs" />
-    <Compile Include="Views\CreatorView.xaml.cs">
-      <DependentUpon>CreatorView.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,31 +63,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ButtonWithObject.cs" />
-    <Compile Include="CheckBoxWithObject.cs" />
-    <Compile Include="CustomButton.cs" />
-    <Compile Include="EnumBindingSourceExtension.cs" />
-    <Compile Include="IRepresentative.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MessageBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RounderProgressBarControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CreatorView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -129,11 +86,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>strings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,33 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\add.png" />
-    <Resource Include="img\back.png" />
-    <Resource Include="img\cal.png" />
-    <Resource Include="img\close.png" />
-    <Resource Include="img\confirm.png" />
-    <Resource Include="img\edit-icon.png" />
-    <Resource Include="img\max.png" />
-    <Resource Include="img\menu.png" />
-    <Resource Include="img\min.png" />
-    <Resource Include="img\minimize.png" />
-    <Resource Include="img\next.png" />
-    <Resource Include="img\remove.png" />
-    <Resource Include="img\x-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\logo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\InvoicesService\InvoicesService.csproj">
-      <Project>{91080ebe-90b1-4827-a52f-7d13239f41c5}</Project>
-      <Name>InvoicesService</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
