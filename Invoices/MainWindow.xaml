@@ -7,8 +7,8 @@
         xmlns:invoices="clr-namespace:Invoices"
         xmlns:resources="clr-namespace:Invoices.Properties"
         mc:Ignorable="d"
-        Title="Paygl" Height="750" Width="1200"
-        MinHeight="750" MinWidth="1200"
+        Title="Invoices" Height="600" Width="1200"
+        MinHeight="600" MinWidth="1200"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
         Icon="./img/logo.ico" Loaded="Window_Loaded">

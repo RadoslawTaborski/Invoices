@@ -301,7 +301,7 @@ namespace InvoicesService.WordGenerator
             p = doc.InsertParagraph().Append($"Do zapłaty: ", formattingWithoutBold);
             p.Append($"{sum:0.00} zł\r\n", formattingBold);
             p.Append("Słownie: ", formattingWithoutBold);
-            p.Append($"{ NumberToText.Convert(sum, Currency.PLN, true)}", formattingBold);
+            p.Append($"{ NumberToText.Convert(sum, LiczbyNaSlowaNETCore.Currency.PLN, true)}", formattingBold);
 
             return t;
         }

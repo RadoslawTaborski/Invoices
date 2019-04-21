@@ -28,16 +28,21 @@ namespace Invoices
         public const int MenuButtonHeight = 50;
         public const int ViewbarButtonWidth = 120;
 
-        private static CustomButton _btnView;
+        private static CustomButton _btnInvoices;
+        private static CustomButton _btnData;
+
         private static UserControl _selectedView;
         private static UserControl _previousView;
         private List<UserControl> _views;
-        private static CustomButton _btnAnalyse;
 
-        private static ItemsControl _icOperationsButtons;
+        private static ItemsControl _icInvoicesButtons;
         private static CustomButton _btnCreatorView;
+        private static CustomButton _btnInvoicesView;
 
-
+        private static ItemsControl _icDataButtons;
+        private static CustomButton _btnVendorsView;
+        private static CustomButton _btnCustomersView;
+        private static CustomButton _btnConsumersView;
         #endregion
 
         #region CONSTRUCTORS
@@ -61,19 +66,42 @@ namespace Invoices
                 SecondMenu.Visibility = Visibility.Hidden;
 
                 var menuButtons = new List<CustomButton>();
-                _btnView = CreateButton("btnOperations", Properties.strings.btnInit, MenuButtonHeight,
-                    btnOperations_Click);
-                menuButtons.Add(_btnView);
+                _btnInvoices = CreateButton("btnInvoices", Properties.strings.btnInvoices, MenuButtonHeight,
+                    btnInvoices_Click);
+                menuButtons.Add(_btnInvoices);
+                _btnData = CreateButton("btnData", Properties.strings.btnData, MenuButtonHeight,
+                    btnData_Click);
+                menuButtons.Add(_btnData);
 
                 _firstPanel.ItemsSource = menuButtons;
 
-                _icOperationsButtons = XamlReader.Parse(XamlWriter.Save(_secondPanel)) as ItemsControl;
+                _icInvoicesButtons = XamlReader.Parse(XamlWriter.Save(_secondPanel)) as ItemsControl;
                 var b1Buttons = new List<CustomButton>();
                 _btnCreatorView = CreateButton("btnCreator", Properties.strings.btnCreator, MenuButtonHeight,
                     BtnCreatorView_Click);
                 b1Buttons.Add(_btnCreatorView);
 
-                if (_icOperationsButtons != null) _icOperationsButtons.ItemsSource = b1Buttons;
+                _btnInvoicesView = CreateButton("btnInvoices", Properties.strings.btnInvoices, MenuButtonHeight,
+                    BtnInvoicesView_Click);
+                b1Buttons.Add(_btnInvoicesView);
+
+                if (_icInvoicesButtons != null) _icInvoicesButtons.ItemsSource = b1Buttons;
+
+                _icDataButtons = XamlReader.Parse(XamlWriter.Save(_secondPanel)) as ItemsControl;
+                var b2Buttons = new List<CustomButton>();
+                _btnVendorsView = CreateButton("btnVendors", Properties.strings.btnVendors, MenuButtonHeight,
+                    BtnVendorsView_Click);
+                b2Buttons.Add(_btnVendorsView);
+
+                _btnConsumersView = CreateButton("btnConsumers", Properties.strings.btnConsumers, MenuButtonHeight,
+                    BtnConsumersView_Click);
+                b2Buttons.Add(_btnConsumersView);
+
+                _btnCustomersView = CreateButton("btnCustomers", Properties.strings.btnCustomers, MenuButtonHeight,
+                    BtnCustomersView_Click);
+                b2Buttons.Add(_btnCustomersView);
+
+                if (_icDataButtons != null) _icDataButtons.ItemsSource = b2Buttons;
             }
             catch (Exception ex)
             {
@@ -84,22 +112,47 @@ namespace Invoices
 
         #region menuItems
 
-        private void btnOperations_Click(object sender, RoutedEventArgs e)
+        private void btnInvoices_Click(object sender, RoutedEventArgs e)
         {
-            ShowOrHideSecondMenu(_icOperationsButtons);
-            SetSecondMenu(_icOperationsButtons);
+            ShowOrHideSecondMenu(_icInvoicesButtons);
+            SetSecondMenu(_icInvoicesButtons);
+        }
+
+        private void btnData_Click(object sender, RoutedEventArgs e)
+        {
+            ShowOrHideSecondMenu(_icDataButtons);
+            SetSecondMenu(_icDataButtons);
         }
 
         #endregion
 
-        #region OperationItems
-
+        #region InvoicesItems
         private void BtnCreatorView_Click(object sender, RoutedEventArgs e)
         {
             CreateAndOpenNewView(new CreatorView());
         }
 
+        private void BtnInvoicesView_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAndOpenNewView(new ShowInvoicesView());
+        }
+        #endregion
 
+        #region DataItems
+        private void BtnCustomersView_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAndOpenNewView(new ShowCustomersView());
+        }
+
+        private void BtnConsumersView_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAndOpenNewView(new ShowConsumersView());
+        }
+
+        private void BtnVendorsView_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAndOpenNewView(new ShowVendorsView());
+        }
         #endregion
 
         #region TITLE_BAR

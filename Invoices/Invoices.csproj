@@ -74,8 +74,35 @@
       <DependentUpon>RounderProgressBarControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewMenager.cs" />
+    <Compile Include="Views\AddConsumerView.xaml.cs">
+      <DependentUpon>AddConsumerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddCustomerView.xaml.cs">
+      <DependentUpon>AddCustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddedItemsView.xaml.cs">
+      <DependentUpon>AddedItemsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddVendorView.xaml.cs">
+      <DependentUpon>AddVendorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateInvoiceItemView.xaml.cs">
+      <DependentUpon>CreateInvoiceItemView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreatorView.xaml.cs">
       <DependentUpon>CreatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowConsumersView.xaml.cs">
+      <DependentUpon>ShowConsumersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowCustomersView.xaml.cs">
+      <DependentUpon>ShowCustomersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowInvoicesView.xaml.cs">
+      <DependentUpon>ShowInvoicesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowVendorsView.xaml.cs">
+      <DependentUpon>ShowVendorsView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,7 +133,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddConsumerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddedItemsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddVendorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateInvoiceItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreatorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowConsumersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowCustomersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowInvoicesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowVendorsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,7 +193,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\strings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />

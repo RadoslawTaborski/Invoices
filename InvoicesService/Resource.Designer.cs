@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InvoicesService { 
+namespace InvoicesService {
     
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
@@ -59,6 +59,15 @@ namespace InvoicesService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to szt..
+        /// </summary>
+        internal static string art {
+            get {
+                return ResourceManager.GetString("art", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to kopia.
         /// </summary>
         internal static string copy {
@@ -77,11 +86,38 @@ namespace InvoicesService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to kg.
+        /// </summary>
+        internal static string kilogram {
+            get {
+                return ResourceManager.GetString("kilogram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to orginał.
         /// </summary>
         internal static string orginal {
             get {
                 return ResourceManager.GetString("orginal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to mb.
+        /// </summary>
+        internal static string runningMeter {
+            get {
+                return ResourceManager.GetString("runningMeter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to m2.
+        /// </summary>
+        internal static string squareMeter {
+            get {
+                return ResourceManager.GetString("squareMeter", resourceCulture);
             }
         }
         

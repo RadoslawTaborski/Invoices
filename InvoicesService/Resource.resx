@@ -117,14 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="art" xml:space="preserve">
+    <value>szt.</value>
+  </data>
   <data name="copy" xml:space="preserve">
     <value>kopia</value>
   </data>
   <data name="customerSign" xml:space="preserve">
     <value>podpis osoby upoważnionej do odbioru rachunku</value>
   </data>
+  <data name="kilogram" xml:space="preserve">
+    <value>kg</value>
+  </data>
   <data name="orginal" xml:space="preserve">
     <value>orginał</value>
+  </data>
+  <data name="runningMeter" xml:space="preserve">
+    <value>mb</value>
+  </data>
+  <data name="squareMeter" xml:space="preserve">
+    <value>m2</value>
   </data>
   <data name="vendorSign" xml:space="preserve">
     <value>podpis osoby upoważnionej do wystawienia rachunku</value>

@@ -9,6 +9,7 @@ namespace InvoicesService.Models
         public int Id { get; set; }
         public virtual string CompanyName { get; set; }
         public virtual string VendorName { get; set; }
+        public virtual string VendorLastName { get; set; }
         public virtual string Street { get; set; }
         public virtual string PostCode { get; set; }
         public virtual string Nip { get; set; }

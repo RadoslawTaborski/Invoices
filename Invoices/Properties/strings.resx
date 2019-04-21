@@ -120,16 +120,133 @@
   <data name="AppName" xml:space="preserve">
     <value>Faktury</value>
   </data>
+  <data name="btnAdd" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="btnAddItems" xml:space="preserve">
+    <value>Dodaj artykuły</value>
+  </data>
+  <data name="btnConsumers" xml:space="preserve">
+    <value>Odbiorcy</value>
+  </data>
   <data name="btnCreator" xml:space="preserve">
     <value>Generuj</value>
   </data>
-  <data name="btnInit" xml:space="preserve">
+  <data name="btnCustomers" xml:space="preserve">
+    <value>Klienci</value>
+  </data>
+  <data name="btnData" xml:space="preserve">
+    <value>Dane</value>
+  </data>
+  <data name="btnGenerateDocument" xml:space="preserve">
+    <value>Generuj rachunek</value>
+  </data>
+  <data name="btnInvoices" xml:space="preserve">
     <value>Faktury</value>
+  </data>
+  <data name="btnInvoicesView" xml:space="preserve">
+    <value>Przegląd faktur</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="btnVendors" xml:space="preserve">
+    <value>Sprzedawcy</value>
   </data>
   <data name="documentsGenerated" xml:space="preserve">
     <value>Wygenerowano dokumenty</value>
   </data>
+  <data name="lblAmount" xml:space="preserve">
+    <value>Ilość:</value>
+  </data>
+  <data name="lblConsumer" xml:space="preserve">
+    <value>Odbiorca:</value>
+  </data>
+  <data name="lblCustomer" xml:space="preserve">
+    <value>Klient:</value>
+  </data>
+  <data name="lblDate" xml:space="preserve">
+    <value>Data wystawienia:</value>
+  </data>
+  <data name="lblItem" xml:space="preserve">
+    <value>Nazwa:</value>
+  </data>
+  <data name="lblNumber" xml:space="preserve">
+    <value>Numer rachunku:</value>
+  </data>
+  <data name="lblPaymentDate" xml:space="preserve">
+    <value>Data płatności:</value>
+  </data>
+  <data name="lblPaymentMethod" xml:space="preserve">
+    <value>Metoda płatności:</value>
+  </data>
+  <data name="lblPlace" xml:space="preserve">
+    <value>Miejsce wystawienia:</value>
+  </data>
+  <data name="lblPrice" xml:space="preserve">
+    <value>Cena za jednostkę:</value>
+  </data>
+  <data name="lblUnit" xml:space="preserve">
+    <value>Jednostka miary:</value>
+  </data>
+  <data name="lblVendor" xml:space="preserve">
+    <value>Sprzedawca:</value>
+  </data>
   <data name="messageBoxStatement" xml:space="preserve">
     <value>Komunikat</value>
+  </data>
+  <data name="ucAddConsumerView" xml:space="preserve">
+    <value>Dodaj odbiorcę</value>
+  </data>
+  <data name="ucAddCustomerView" xml:space="preserve">
+    <value>Dodaj klienta</value>
+  </data>
+  <data name="ucAddedItemsView" xml:space="preserve">
+    <value>Lista artykułów</value>
+  </data>
+  <data name="ucAddVendorView" xml:space="preserve">
+    <value>Dodaj sprzedawcę</value>
+  </data>
+  <data name="ucCreateInvoiceItemView" xml:space="preserve">
+    <value>Kreator artykułu</value>
+  </data>
+  <data name="ucCreator" xml:space="preserve">
+    <value>Kreator</value>
+  </data>
+  <data name="ucShowConsumersView" xml:space="preserve">
+    <value>Przegląd odbiorców</value>
+  </data>
+  <data name="ucShowCustomersView" xml:space="preserve">
+    <value>Przegląd klientów</value>
+  </data>
+  <data name="ucShowInvoicesView" xml:space="preserve">
+    <value>Przegląd faktur</value>
+  </data>
+  <data name="ucShowVendorsView" xml:space="preserve">
+    <value>Przegląd sprzedawców</value>
+  </data>
+  <data name="lblVendorBankAccount" xml:space="preserve">
+    <value>Nr konta:</value>
+  </data>
+  <data name="lblVendorBankName" xml:space="preserve">
+    <value>Nazwa banku:</value>
+  </data>
+  <data name="lblVendorCompany" xml:space="preserve">
+    <value>Nazwa firmy:</value>
+  </data>
+  <data name="lblVendorLastName" xml:space="preserve">
+    <value>Nazwisko:</value>
+  </data>
+  <data name="lblVendorName" xml:space="preserve">
+    <value>Imię:</value>
+  </data>
+  <data name="lblVendorNip" xml:space="preserve">
+    <value>NIP:</value>
+  </data>
+  <data name="lblVendorPostCode" xml:space="preserve">
+    <value>Kod pocztowy:</value>
+  </data>
+  <data name="lblVendorStreet" xml:space="preserve">
+    <value>Adres:</value>
   </data>
 </root>

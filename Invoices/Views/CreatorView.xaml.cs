@@ -24,14 +24,30 @@ namespace Invoices.Views
     /// </summary>
     public partial class CreatorView : UserControl, IRepresentative
     {
+        private Invoice _invoice;
         public CreatorView()
         {
             InitializeComponent();
+            _invoice=new Invoice();
         }
 
-        public string RepresentativeName { get; set; } = "Creator";
+        public string RepresentativeName { get; set; } = Properties.strings.ucCreator;
 
-        private void Generate_Click(object sender, RoutedEventArgs e)
+        private void AddItems_Click(object sender, RoutedEventArgs e)
+        {
+            var view = new AddedItemsView(_invoice);
+            ViewManager.AddUserControl(view);
+            ViewManager.OpenUserControl(view);
+
+            e.Handled = true;
+        }
+
+        public override string ToString()
+        {
+            return "CreatorView";
+        }
+
+        private void BtnGenerateDocument_Click(object sender, RoutedEventArgs e)
         {
             var context = new Context();
             var invoices = new ObservableCollection<Invoice>(context.Invoices);
@@ -39,11 +55,6 @@ namespace Invoices.Views
 
             var dialog = new MessageBox(Properties.strings.messageBoxStatement, Properties.strings.documentsGenerated);
             dialog.ShowDialog();
-        }
-
-        public override string ToString()
-        {
-            return "CreatorView";
         }
     }
 }
