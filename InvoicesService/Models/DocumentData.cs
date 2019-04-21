@@ -4,20 +4,25 @@ using System.Text;
 
 namespace InvoicesService.Models
 {
-    public class DocumentData
+    public class DocumentData : IValidator
     {
         public int Id { get; set; }
-        public virtual string Number { get; set; }
-        public virtual string Date { get; set; }
-        public virtual string Place { get; set; }
-
-        public DocumentData(string number, string date, string place)
-        {
-            Number = number;
-            Date = date;
-            Place = place;
-        }
+        public string Number { get; set; }
+        public DateTime Date { get; set; }
+        public string Place { get; set; }
 
         public DocumentData() { }
+
+        public List<Message> Validate()
+        {
+            var errors = new List<Message>();
+
+            return errors;
+        }
+
+        public override string ToString()
+        {
+            return $"{Date: dd.MM.yyyy} - {Number}";
+        }
     }
 }

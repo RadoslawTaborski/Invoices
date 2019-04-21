@@ -48,11 +48,7 @@ namespace Invoices.Views
                 BankAccount = _tbBankAccount.Text
             };
 
-            var context = new Context();
-
-            context.Vendors.Add(vendor);
-
-            context.SaveChanges();
+            Saver.Save(vendor);
         }
     }
 }

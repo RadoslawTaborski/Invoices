@@ -17,5 +17,6 @@ namespace InvoicesService
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<UnitOfMeasure> UnitsOfMeasure { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
     }
 }

@@ -4,18 +4,19 @@ using System.Text;
 
 namespace InvoicesService.Models
 {
-    public class PaymentData
+    public class PaymentData : IValidator
     {
         public int Id { get; set; }
-        public virtual string PaymentMethod { get; set; }
-        public virtual string PaymentDate { get; set; }
-
-        public PaymentData(string paymentMethod, string paymentDate)
-        {
-            PaymentMethod = paymentMethod;
-            PaymentDate = paymentDate;
-        }
+        public virtual PaymentMethod PaymentMethod { get; set; }
+        public DateTime PaymentDate { get; set; }
 
         public PaymentData() { }
+
+        public List<Message> Validate()
+        {
+            var errors = new List<Message>();
+
+            return errors;
+        }
     }
 }

@@ -27,6 +27,12 @@ namespace InvoicesService
             context.Currencies.Add(currency1);
             context.Currencies.Add(currency2);
 
+            var paymentMethod1 = new PaymentMethod {Name = Resource.transferMethod};
+            var paymentMethod2 = new PaymentMethod {Name = Resource.cashMethod};
+
+            context.PaymentMethods.Add(paymentMethod1);
+            context.PaymentMethods.Add(paymentMethod2);
+
             context.SaveChanges();
         }
     }

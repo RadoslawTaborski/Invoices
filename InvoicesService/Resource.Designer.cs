@@ -10,6 +10,7 @@
 
 namespace InvoicesService {
     
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -68,6 +69,15 @@ namespace InvoicesService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to gotówka.
+        /// </summary>
+        internal static string cashMethod {
+            get {
+                return ResourceManager.GetString("cashMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to kopia.
         /// </summary>
         internal static string copy {
@@ -95,7 +105,16 @@ namespace InvoicesService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to orginał.
+        ///   Looks up a localized string similar to NIP powinien mieć 10 cyfr.
+        /// </summary>
+        internal static string NIPValidate {
+            get {
+                return ResourceManager.GetString("NIPValidate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to oryginał.
         /// </summary>
         internal static string orginal {
             get {
@@ -118,6 +137,15 @@ namespace InvoicesService {
         internal static string squareMeter {
             get {
                 return ResourceManager.GetString("squareMeter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to przelew.
+        /// </summary>
+        internal static string transferMethod {
+            get {
+                return ResourceManager.GetString("transferMethod", resourceCulture);
             }
         }
         

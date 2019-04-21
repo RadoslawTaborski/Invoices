@@ -25,7 +25,7 @@ namespace Invoices.Views
             InitializeComponent();
         }
 
-        public string RepresentativeName { get; set; } = Properties.strings.ucAddCustomerView;
+        public string RepresentativeName { get; set; } = Properties.strings.ucShowCustomersView;
 
         public override string ToString()
         {

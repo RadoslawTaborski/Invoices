@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using InvoicesService.Models;
 
 namespace Invoices.Views
 {
@@ -31,5 +32,20 @@ namespace Invoices.Views
         }
 
         public string RepresentativeName { get; set; } = Properties.strings.ucAddConsumerView;
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            var consumer = new Consumer()
+            {
+                CompanyName = _tbCompanyName.Text,
+                ConsumerName = _tbName.Text,
+                ConsumerLastName = _tbLastName.Text,
+                Street = _tbAddress.Text,
+                PostCode = _tbPostCode.Text,
+                Nip = _tbNIP.Text,
+            };
+
+            Saver.Save(consumer);
+        }
     }
 }

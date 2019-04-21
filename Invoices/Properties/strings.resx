@@ -249,4 +249,7 @@
   <data name="lblVendorStreet" xml:space="preserve">
     <value>Adres:</value>
   </data>
+  <data name="dateFormat" xml:space="preserve">
+    <value>dd.MM.yyyy</value>
+  </data>
 </root>

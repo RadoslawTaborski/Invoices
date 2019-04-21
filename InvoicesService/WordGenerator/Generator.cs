@@ -136,12 +136,12 @@ namespace InvoicesService.WordGenerator
             var formattingWithoutBold = new Formatting { Bold = false, Size = DefaultSize, FontFamily = Font };
 
             p.Append("Sprzedawca:\r\n", formattingWithoutBold);
-            AddStringItem(p, "", vendor.CompanyName, DefaultSize);
-            AddStringItem(p, "", vendor.VendorName, DefaultSize);
-            AddStringItem(p, "", vendor.Street, DefaultSize);
-            AddStringItem(p, "", vendor.PostCode, DefaultSize);
+            AddStringItem(p, "", vendor.CompanyName.ToUpper(), DefaultSize);
+            AddStringItem(p, "", $"{vendor.VendorName} {vendor.VendorLastName}".ToUpper(), DefaultSize);
+            AddStringItem(p, "", vendor.Street.ToUpper(), DefaultSize);
+            AddStringItem(p, "", vendor.PostCode.ToUpper(), DefaultSize);
             AddStringItem(p, "NIP", vendor.Nip, DefaultSize);
-            AddStringItem(p, "bank", vendor.BankName, DefaultSize);
+            AddStringItem(p, "bank", vendor.BankName.ToUpper(), DefaultSize);
             AddStringItem(p, "konto", vendor.BankAccount, DefaultSize);
 
             return p;
@@ -156,10 +156,10 @@ namespace InvoicesService.WordGenerator
             var formattingWithoutBold = new Formatting { Bold = false, Size = DefaultSize, FontFamily = Font };
 
             p.Append("Nabywca:\r\n", formattingWithoutBold);
-            AddStringItem(p, "", customer.CompanyName, DefaultSize);
-            AddStringItem(p, "", customer.CustomerName, DefaultSize);
-            AddStringItem(p, "", customer.Street, DefaultSize);
-            AddStringItem(p, "", customer.PostCode, DefaultSize);
+            AddStringItem(p, "", customer.CompanyName.ToUpper(), DefaultSize);
+            AddStringItem(p, "", $"{customer.CustomerName} {customer.CustomerLastName}".ToUpper(), DefaultSize);
+            AddStringItem(p, "", customer.Street.ToUpper(), DefaultSize);
+            AddStringItem(p, "", customer.PostCode.ToUpper(), DefaultSize);
             AddStringItem(p, "NIP", customer.Nip, DefaultSize);
 
             return p;
@@ -173,11 +173,11 @@ namespace InvoicesService.WordGenerator
             var formattingBold = new Formatting { Bold = true, Size = DefaultSize, FontFamily = Font };
             var formattingWithoutBold = new Formatting { Bold = false, Size = DefaultSize, FontFamily = Font };
 
-            p.Append("Nabywca:\r\n", formattingWithoutBold);
-            AddStringItem(p, "", consumer.CompanyName, DefaultSize);
-            AddStringItem(p, "", consumer.CustomerName, DefaultSize);
-            AddStringItem(p, "", consumer.Street, DefaultSize);
-            AddStringItem(p, "", consumer.PostCode, DefaultSize);
+            p.Append("Odbiorca:\r\n", formattingWithoutBold);
+            AddStringItem(p, "", consumer.CompanyName.ToUpper(), DefaultSize);
+            AddStringItem(p, "", $"{consumer.ConsumerName} {consumer.ConsumerLastName}".ToUpper(), DefaultSize);
+            AddStringItem(p, "", consumer.Street.ToUpper(), DefaultSize);
+            AddStringItem(p, "", consumer.PostCode.ToUpper(), DefaultSize);
             AddStringItem(p, "NIP", consumer.Nip, DefaultSize);
 
             return p;
@@ -194,8 +194,8 @@ namespace InvoicesService.WordGenerator
 
             p.Append($"Rachunek nr {data.Number}\r\n", formattingBold);
             p.Append($"{type}\r\n\r\n", formattingWithoutBold);
-            AddStringItem(p, "Miejsce wystawienia", data.Place, DefaultSize);
-            AddStringItem(p, "Data wystawienia", data.Date, DefaultSize);
+            AddStringItem(p, "Miejsce wystawienia", data.Place.ToUpper(), DefaultSize);
+            AddStringItem(p, "Data wystawienia", $"{data.Date: dd.MM.yyyy}", DefaultSize);
 
             return p;
         }
@@ -204,8 +204,8 @@ namespace InvoicesService.WordGenerator
         {
             var p = cell.InsertParagraph();
             p.Alignment = Alignment.right;
-            AddStringItem(p, "Forma płatności", data.PaymentMethod, DefaultSize);
-            AddStringItem(p, "Data płatności", data.PaymentDate, DefaultSize);
+            AddStringItem(p, "Forma płatności",  data.PaymentMethod.Name.ToUpper(), DefaultSize);
+            AddStringItem(p, "Data płatności", $"{data.PaymentDate: dd.MM.yyyy}", DefaultSize);
 
             return p;
         }
@@ -214,7 +214,7 @@ namespace InvoicesService.WordGenerator
         {
             var formattingBold = new Formatting { Bold = true, Size = size, FontFamily = Font };
             var formattingWithoutBold = new Formatting { Bold = false, Size = size, FontFamily = Font };
-            if (text == "")
+            if (text.Trim()=="")
             {
                 return p;
             }
@@ -319,7 +319,7 @@ namespace InvoicesService.WordGenerator
             p.Alignment = Alignment.right;
             p = table.Rows[i].Cells[3].Paragraphs.First().Append($"{row.Amount:0.00}", formattingWithoutBold);
             p.Alignment = Alignment.right;
-            p = table.Rows[i].Cells[4].Paragraphs.First().Append(row.Unit, formattingWithoutBold);
+            p = table.Rows[i].Cells[4].Paragraphs.First().Append(row.Unit.Name, formattingWithoutBold);
             p.Alignment = Alignment.left;
             p = table.Rows[i].Cells[5].Paragraphs.First().Append($"{row.Total:0.00}", formattingWithoutBold);
             p.Alignment = Alignment.right;

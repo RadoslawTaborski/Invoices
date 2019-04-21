@@ -4,24 +4,28 @@ using System.Text;
 
 namespace InvoicesService.Models
 {
-    public class Consumer
+    public class Consumer : IValidator
     {
         public int Id { get; set; }
-        public virtual string CompanyName { get; set; }
-        public virtual string CustomerName { get; set; }
-        public virtual string Street { get; set; }
-        public virtual string PostCode { get; set; }
-        public virtual string Nip { get; set; }
-
-        public Consumer(string companyName, string customerName, string street, string postCode, string nip)
-        {
-            CompanyName = companyName;
-            CustomerName = customerName;
-            Street = street;
-            PostCode = postCode;
-            Nip = nip;
-        }
+        public string CompanyName { get; set; }
+        public string ConsumerName { get; set; }
+        public string ConsumerLastName { get; set; }
+        public string Street { get; set; }
+        public string PostCode { get; set; }
+        public string Nip { get; set; }
 
         public Consumer() { }
+
+        public List<Message> Validate()
+        {
+            var errors = new List<Message>();
+
+            return errors;
+        }
+
+        public override string ToString()
+        {
+            return $"{CompanyName} - {ConsumerName} {ConsumerLastName}";
+        }
     }
 }

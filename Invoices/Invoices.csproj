@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\ObservableRangeCollection.cs" />
     <Compile Include="MessageBox.xaml.cs">
       <DependentUpon>MessageBox.xaml</DependentUpon>
     </Compile>
@@ -73,6 +74,7 @@
     <Compile Include="RounderProgressBarControl.xaml.cs">
       <DependentUpon>RounderProgressBarControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Saver.cs" />
     <Compile Include="ViewMenager.cs" />
     <Compile Include="Views\AddConsumerView.xaml.cs">
       <DependentUpon>AddConsumerView.xaml</DependentUpon>

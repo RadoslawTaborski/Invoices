@@ -169,6 +169,15 @@ namespace Invoices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to dd.MM.yyyy.
+        /// </summary>
+        public static string dateFormat {
+            get {
+                return ResourceManager.GetString("dateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wygenerowano dokumenty.
         /// </summary>
         public static string documentsGenerated {
