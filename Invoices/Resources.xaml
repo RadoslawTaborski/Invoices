@@ -190,6 +190,12 @@
         <Setter Property="Foreground" Value="{StaticResource MyDarkGrey}" />
     </Style>
 
+    <Style TargetType="xctk:DecimalUpDown" x:Key="MyDecimalUpDown">
+        <Setter Property="BorderBrush" Value="{StaticResource MyLight}" />
+        <Setter Property="Background" Value="{StaticResource MyAzure}" />
+        <Setter Property="Foreground" Value="{StaticResource MyDarkGrey}" />
+    </Style>
+
     <Style TargetType="Label" x:Key="MyLabel">
         <Setter Property="BorderBrush" Value="{StaticResource MyLight}" />
         <Setter Property="Foreground" Value="{StaticResource MyAzure}" />

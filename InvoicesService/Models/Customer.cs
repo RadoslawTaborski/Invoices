@@ -27,7 +27,12 @@ namespace InvoicesService.Models
 
         public override string ToString()
         {
-            return $"{CompanyName} - {CustomerName} {CustomerLastName}";
+            if (CustomerLastName.Trim() != "" || CustomerName.Trim() != "")
+            {
+                return $"{CompanyName} - {CustomerName} {CustomerLastName}";
+            }
+
+            return $"{CompanyName}";
         }
     }
 }

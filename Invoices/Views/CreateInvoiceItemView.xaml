@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Invoices.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:resources="clr-namespace:Invoices.Properties"
              xmlns:invoices="clr-namespace:Invoices"
              mc:Ignorable="d" 
@@ -15,9 +16,16 @@
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
+                <RowDefinition Height="170"/>
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <Grid x:Name="MainGrid" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" ShowGridLines="True">
+            <Border Style="{StaticResource MyBorderMedium}" Margin="10,10,10,10" Grid.Row="0" BorderBrush="{StaticResource MyLightGrey}" BorderThickness="2">
+                <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource MyScrollViewer}" >
+                    <StackPanel Name="_spDisplay" Orientation="Vertical">
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+            <Grid x:Name="MainGrid" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" ShowGridLines="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition/>
@@ -33,8 +41,13 @@
                 <Label Style="{StaticResource MyLabel}" Content="{x:Static resources:strings.lblPrice}" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Margin="0,0,0,0"/>
                 <Label Style="{StaticResource MyLabel}" Content="{x:Static resources:strings.lblAmount}" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="2" Margin="0,0,0,0"/>
                 <Label Style="{StaticResource MyLabel}" Content="{x:Static resources:strings.lblUnit}" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="3" Margin="0,0,0,0"/>
+
+                <TextBox Style="{StaticResource MyTextBox}" x:Name="_tbName" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="500" Margin="10,0,0,0" TextWrapping="Wrap" Text="" Grid.Column="1" Grid.Row="0"/>
+                <xctk:DecimalUpDown Style="{StaticResource MyDecimalUpDown}" x:Name="_upDownPrice" FormatString="F2" Increment="0.01" Minimum="0" Width="500" Grid.Column="1" Grid.Row="1" Margin="10,0,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                <xctk:DecimalUpDown Style="{StaticResource MyDecimalUpDown}" x:Name="_upDownAmount" FormatString="F2" Increment="0.01" Minimum="0" Width="500" Grid.Column="1" Grid.Row="2" Margin="10,0,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Center" />
+                <ComboBox x:Name="_cbUnit" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Width="500"/>
             </Grid>
-            <Grid Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+            <Grid Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>

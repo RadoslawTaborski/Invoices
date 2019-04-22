@@ -50,9 +50,6 @@ namespace Invoices.Views
         {
             using (var context = new Context())
             {
-                var rtn = from temp in context.Vendors select temp;
-                var list = rtn.ToList();
-
                 _lblNumber.Content = GenerateInvoiceNumber();
                 _observableCustomers = new ObservableRangeCollection<Customer>(context.Customers);
                 _cbCustomer.ItemsSource = _observableCustomers;
@@ -124,7 +121,7 @@ namespace Invoices.Views
 
         private void AddItems_Click(object sender, RoutedEventArgs e)
         {
-            var view = new AddedItemsView(_invoice);
+            var view = new CreateInvoiceItemView(_invoice.Items);
             ViewManager.AddUserControl(view);
             ViewManager.OpenUserControl(view);
 
@@ -164,6 +161,12 @@ namespace Invoices.Views
                     Properties.strings.dateFormat, System.Globalization.CultureInfo.InvariantCulture);
                 _invoice.DocumentData.Number = _lblNumber.Content.ToString();
                 _invoice.DocumentData.Place = _tbPlace.Text;
+
+                foreach (var item in _invoice.Items)
+                {
+                    item.Currency = context.Currencies.FirstOrDefault(c => c.Id == item.Currency.Id);
+                    item.Unit = context.UnitsOfMeasure.FirstOrDefault(u => u.Id == item.Unit.Id);
+                }
 
                 var result = Saver.Save(_invoice, context);
                 if (!result) return;

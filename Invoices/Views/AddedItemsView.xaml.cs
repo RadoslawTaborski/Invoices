@@ -22,10 +22,12 @@ namespace Invoices.Views
     public partial class AddedItemsView : IRepresentative
     {
         public string RepresentativeName { get; set; } = Properties.strings.ucAddedItemsView;
+        private Invoice _invoice;
 
         public AddedItemsView(Invoice invoice)
         {
             InitializeComponent();
+            _invoice = invoice;
         }
 
         public override string ToString()
@@ -40,7 +42,7 @@ namespace Invoices.Views
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var view = new CreateInvoiceItemView();
+            var view = new CreateInvoiceItemView(_invoice.Items);
             ViewManager.AddUserControl(view);
             ViewManager.OpenUserControl(view);
 

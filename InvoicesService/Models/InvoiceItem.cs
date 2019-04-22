@@ -20,7 +20,25 @@ namespace InvoicesService.Models
         {
             var errors = new List<Message>();
 
+            if (Price == decimal.Zero)
+            {
+                errors.Add(new Message("Cena nie może wynosić 0"));
+            }
+            if (Amount == decimal.Zero)
+            {
+                errors.Add(new Message("Ilość nie może wynosić 0"));
+            }
+            if (Name.Trim() == "")
+            {
+                errors.Add(new Message("Nazwa artykułu nie może być pusta"));
+            }
+
             return errors;
+        }
+
+        public void SetTotal()
+        {
+            Total = Price * Amount;
         }
     }
 }

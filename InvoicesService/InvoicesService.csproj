@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="configuration.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="configuration.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DocX" Version="1.3.0" />
     <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="LiczbyNaSlowaNetCore" Version="1.0.5" />
@@ -24,12 +34,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="configuration.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

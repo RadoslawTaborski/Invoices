@@ -35,6 +35,28 @@ namespace Invoices
             }
         }
 
+        public static bool Checker(IValidator validator)
+        {
+            var errors = validator.Validate();
+
+            if (errors.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                var message = "";
+                foreach (var error in errors)
+                {
+                    message += $"{error.Text}\r\n";
+                }
+                var dialog = new MessageBox(Properties.strings.messageBoxStatement, message);
+                dialog.Show();
+
+                return false;
+            }
+        }
+
         public static bool Save(IValidator validator)
         {
             var errors = validator.Validate();

@@ -311,7 +311,7 @@ namespace InvoicesService.WordGenerator
             var formattingBold = new Formatting { Bold = true, Size = DefaultSize, FontFamily = Font };
             var formattingWithoutBold = new Formatting { Bold = false, Size = DefaultSize, FontFamily = Font };
 
-            var p = table.Rows[i].Cells[0].Paragraphs.First().Append($"{i-1}", formattingWithoutBold);
+            var p = table.Rows[i].Cells[0].Paragraphs.First().Append($"{i}", formattingWithoutBold);
             p.Alignment = Alignment.right;
             p = table.Rows[i].Cells[1].Paragraphs.First().Append(row.Name, formattingWithoutBold);
             p.Alignment = Alignment.left;
