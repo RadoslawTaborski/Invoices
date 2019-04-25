@@ -16,5 +16,8 @@ namespace Invoices.Models
 
         public delegate void ChangeInVendorDelegate();
         public static ChangeInVendorDelegate ChangeInVendor;
+
+        public delegate void ChangeInInvoiceDelegate();
+        public static ChangeInInvoiceDelegate ChangeInInvoice;
     }
 }

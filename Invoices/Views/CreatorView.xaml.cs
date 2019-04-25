@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Invoices.Models;
 using InvoicesService;
 using InvoicesService.Models;
 using InvoicesService.WordGenerator;
@@ -173,6 +174,7 @@ namespace Invoices.Views
             }
 
             Generator.GenerateDocument(_invoice);
+            Delegates.ChangeInInvoice?.Invoke();
 
             var dialog = new MessageBox(Properties.strings.messageBoxStatement,
                 Properties.strings.documentsGenerated);
