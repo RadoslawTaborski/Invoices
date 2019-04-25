@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Invoices.Models;
 using InvoicesService.Models;
 using Context = InvoicesService.Context;
 
@@ -66,6 +67,7 @@ namespace Invoices.Views
                 var result = Saver.Save(_consumer, context);
                 if (result)
                 {
+                    Delegates.ChangeInConsumer?.Invoke();
                     var dialog = new MessageBox(Properties.strings.messageBoxStatement, Properties.strings.saveSuccessful);
                     dialog.Show();
                 }

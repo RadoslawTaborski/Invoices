@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Invoices.Models;
 using InvoicesService;
 using InvoicesService.Models;
 
@@ -29,6 +30,7 @@ namespace Invoices.Views
         public ShowVendorsView()
         {
             InitializeComponent();
+            Delegates.ChangeInVendor += Show;
             Show();
         }
 
