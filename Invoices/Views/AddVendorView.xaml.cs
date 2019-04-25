@@ -22,9 +22,28 @@ namespace Invoices.Views
     /// </summary>
     public partial class AddVendorView : IRepresentative
     {
+        private Vendor _vendor;
+
         public AddVendorView()
         {
             InitializeComponent();
+        }
+
+        public AddVendorView(Vendor vendor)
+        {
+            InitializeComponent();
+            _vendor = vendor;
+
+            _tbCompanyName.Text = _vendor.CompanyName;
+            _tbName.Text = _vendor.VendorName;
+            _tbLastName.Text = _vendor.VendorLastName;
+            _tbAddress.Text = _vendor.Street;
+            _tbPostCode.Text = _vendor.PostCode;
+            _tbNIP.Text = _vendor.Nip;
+            _tbBankName.Text = _vendor.BankName;
+            _tbBankAccount.Text = _vendor.BankAccount;
+
+            RepresentativeName = $"{Properties.strings.edit} {_vendor.CompanyName} {_vendor.VendorName} {_vendor.VendorLastName}";
         }
 
         public override string ToString()
@@ -36,19 +55,25 @@ namespace Invoices.Views
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var vendor = new Vendor
+            using (var context = new Context())
             {
-                CompanyName = _tbCompanyName.Text,
-                VendorName = _tbName.Text,
-                VendorLastName = _tbLastName.Text,
-                Street = _tbAddress.Text,
-                PostCode = _tbPostCode.Text,
-                Nip = _tbNIP.Text,
-                BankName = _tbBankName.Text,
-                BankAccount = _tbBankAccount.Text
-            };
+                _vendor = context.Vendors.FirstOrDefault(c => c.Id == _vendor.Id) ?? new Vendor();
+                _vendor.CompanyName = _tbCompanyName.Text;
+                _vendor.VendorName = _tbName.Text;
+                _vendor.VendorLastName = _tbLastName.Text;
+                _vendor.Street = _tbAddress.Text;
+                _vendor.PostCode = _tbPostCode.Text;
+                _vendor.Nip = _tbNIP.Text;
+                _vendor.BankName = _tbBankName.Text;
+                _vendor.BankAccount = _tbBankAccount.Text;
 
-            Saver.Save(vendor);
+                var result = Saver.Save(_vendor, context);
+                if (result)
+                {
+                    var dialog = new MessageBox(Properties.strings.messageBoxStatement, Properties.strings.saveSuccessful);
+                    dialog.Show();
+                }
+            }
         }
     }
 }

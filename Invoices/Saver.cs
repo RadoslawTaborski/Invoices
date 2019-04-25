@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,16 +91,16 @@ namespace Invoices
             switch (validator)
             {
                 case Vendor v when validator is Vendor:
-                    context.Vendors.Add(v);
+                    context.Vendors.AddOrUpdate(v);
                     break;
                 case Customer c when validator is Customer:
-                    context.Customers.Add(c);
+                    context.Customers.AddOrUpdate(c);
                     break;
                 case Consumer c when validator is Consumer:
-                    context.Consumers.Add(c);
+                    context.Consumers.AddOrUpdate(c);
                     break;
                 case Invoice i when validator is Invoice:
-                    context.Invoices.Add(i);
+                    context.Invoices.AddOrUpdate(i);
                     break;
             }
         }

@@ -196,6 +196,15 @@ namespace Invoices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edycja:.
+        /// </summary>
+        public static string edit {
+            get {
+                return ResourceManager.GetString("edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ilość:.
         /// </summary>
         public static string lblAmount {
@@ -390,6 +399,15 @@ namespace Invoices.Properties {
         public static string messageBoxStatement {
             get {
                 return ResourceManager.GetString("messageBoxStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zapis udany.
+        /// </summary>
+        public static string saveSuccessful {
+            get {
+                return ResourceManager.GetString("saveSuccessful", resourceCulture);
             }
         }
         

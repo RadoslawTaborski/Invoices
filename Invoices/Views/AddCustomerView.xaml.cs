@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using InvoicesService;
 using InvoicesService.Models;
 
 namespace Invoices.Views
@@ -21,9 +22,26 @@ namespace Invoices.Views
     /// </summary>
     public partial class AddCustomerView : IRepresentative
     {
+        private Customer _customer;
+
         public AddCustomerView()
         {
             InitializeComponent();
+        }
+
+        public AddCustomerView(Customer customer)
+        {
+            InitializeComponent();
+            _customer = customer;
+
+            _tbCompanyName.Text = _customer.CompanyName;
+            _tbName.Text = _customer.CustomerName;
+            _tbLastName.Text = _customer.CustomerLastName;
+            _tbAddress.Text = _customer.Street;
+            _tbPostCode.Text = _customer.PostCode;
+            _tbNIP.Text = _customer.Nip;
+
+            RepresentativeName = $"{Properties.strings.edit} {_customer.CompanyName} {_customer.CustomerName} {_customer.CustomerLastName}";
         }
 
         public override string ToString()
@@ -35,17 +53,23 @@ namespace Invoices.Views
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var customer = new Customer()
+            using (var context = new Context())
             {
-                CompanyName = _tbCompanyName.Text,
-                CustomerName = _tbName.Text,
-                CustomerLastName = _tbLastName.Text,
-                Street = _tbAddress.Text,
-                PostCode = _tbPostCode.Text,
-                Nip = _tbNIP.Text,
-            };
+                _customer = context.Customers.FirstOrDefault(c => c.Id == _customer.Id) ?? new Customer();
+                _customer.CompanyName = _tbCompanyName.Text;
+                _customer.CustomerName = _tbName.Text;
+                _customer.CustomerLastName = _tbLastName.Text;
+                _customer.Street = _tbAddress.Text;
+                _customer.PostCode = _tbPostCode.Text;
+                _customer.Nip = _tbNIP.Text;
 
-            Saver.Save(customer);
+                var result = Saver.Save(_customer, context);
+                if (result)
+                {
+                    var dialog = new MessageBox(Properties.strings.messageBoxStatement, Properties.strings.saveSuccessful);
+                    dialog.Show();
+                }
+            }
         }
     }
 }

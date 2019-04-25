@@ -150,4 +150,7 @@
   <data name="vendorSign" xml:space="preserve">
     <value>podpis osoby upoważnionej do wystawienia rachunku</value>
   </data>
+  <data name="cubicMeter" xml:space="preserve">
+    <value>m3</value>
+  </data>
 </root>

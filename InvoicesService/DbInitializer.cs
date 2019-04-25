@@ -15,6 +15,7 @@ namespace InvoicesService
             var unit2 = new UnitOfMeasure {Name = Resource.runningMeter};
             var unit3 = new UnitOfMeasure { Name = Resource.squareMeter };
             var unit4 = new UnitOfMeasure { Name = Resource.kilogram };
+            var unit5 = new UnitOfMeasure { Name = Resource.cubicMeter };
 
             context.UnitsOfMeasure.Add(unit1);
             context.UnitsOfMeasure.Add(unit2);

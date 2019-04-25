@@ -110,6 +110,11 @@ namespace Invoices.Views
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             var obj = (ButtonWithObject)sender;
+            var consumer = (Consumer) obj.Object;
+
+            var view = new AddConsumerView(consumer);
+            ViewManager.AddUserControl(view);
+            ViewManager.OpenUserControl(view);
         }
 
         private Border CreateBorderWithLabel(string text, int width)

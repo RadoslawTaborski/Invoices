@@ -264,4 +264,10 @@
   <data name="wrongPath" xml:space="preserve">
     <value>Podana ścieżka jest nieprawidłowa</value>
   </data>
+  <data name="saveSuccessful" xml:space="preserve">
+    <value>Zapis udany</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Edycja:</value>
+  </data>
 </root>

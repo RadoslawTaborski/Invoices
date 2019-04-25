@@ -87,6 +87,15 @@ namespace InvoicesService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to m3.
+        /// </summary>
+        internal static string cubicMeter {
+            get {
+                return ResourceManager.GetString("cubicMeter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to podpis osoby upoważnionej do odbioru rachunku.
         /// </summary>
         internal static string customerSign {
