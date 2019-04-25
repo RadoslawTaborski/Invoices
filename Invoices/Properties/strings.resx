@@ -252,4 +252,16 @@
   <data name="dateFormat" xml:space="preserve">
     <value>dd.MM.yyyy</value>
   </data>
+  <data name="btnSettings" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="lblPath" xml:space="preserve">
+    <value>Ścieżka do plików: </value>
+  </data>
+  <data name="ucSettingsView" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="wrongPath" xml:space="preserve">
+    <value>Podana ścieżka jest nieprawidłowa</value>
+  </data>
 </root>

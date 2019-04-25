@@ -160,6 +160,15 @@ namespace Invoices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ustawienia.
+        /// </summary>
+        public static string btnSettings {
+            get {
+                return ResourceManager.GetString("btnSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sprzedawcy.
         /// </summary>
         public static string btnVendors {
@@ -237,6 +246,15 @@ namespace Invoices.Properties {
         public static string lblNumber {
             get {
                 return ResourceManager.GetString("lblNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ścieżka do plików: .
+        /// </summary>
+        public static string lblPath {
+            get {
+                return ResourceManager.GetString("lblPath", resourceCulture);
             }
         }
         
@@ -430,6 +448,15 @@ namespace Invoices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ustawienia.
+        /// </summary>
+        public static string ucSettingsView {
+            get {
+                return ResourceManager.GetString("ucSettingsView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Przegląd odbiorców.
         /// </summary>
         public static string ucShowConsumersView {
@@ -462,6 +489,15 @@ namespace Invoices.Properties {
         public static string ucShowVendorsView {
             get {
                 return ResourceManager.GetString("ucShowVendorsView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Podana ścieżka jest nieprawidłowa.
+        /// </summary>
+        public static string wrongPath {
+            get {
+                return ResourceManager.GetString("wrongPath", resourceCulture);
             }
         }
     }

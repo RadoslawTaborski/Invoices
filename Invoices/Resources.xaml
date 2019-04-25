@@ -216,6 +216,11 @@
         <Setter Property="Background"  Value="{StaticResource MyMediumGrey}" />
     </Style>
 
+    <Style TargetType="Border" x:Key="MyBorderLight">
+        <Setter Property="BorderBrush" Value="{StaticResource MyLightGrey}" />
+        <Setter Property="Background"  Value="{StaticResource MyMediumGrey}" />
+    </Style>
+
     <Style TargetType="Grid" x:Key="MyGrid">
         <Setter Property="Background" Value="{StaticResource MyMediumGrey}" />
     </Style>

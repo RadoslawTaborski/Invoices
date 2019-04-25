@@ -30,6 +30,7 @@ namespace Invoices
 
         private static CustomButton _btnInvoices;
         private static CustomButton _btnData;
+        private static CustomButton _btnSettings;
 
         private static UserControl _selectedView;
         private static UserControl _previousView;
@@ -72,6 +73,9 @@ namespace Invoices
                 _btnData = CreateButton("btnData", Properties.strings.btnData, MenuButtonHeight,
                     btnData_Click);
                 menuButtons.Add(_btnData);
+                _btnSettings = CreateButton("btnSettings", Properties.strings.btnSettings, MenuButtonHeight,
+                    btnSettings_Click);
+                menuButtons.Add(_btnSettings);
 
                 _firstPanel.ItemsSource = menuButtons;
 
@@ -122,6 +126,11 @@ namespace Invoices
         {
             ShowOrHideSecondMenu(_icDataButtons);
             SetSecondMenu(_icDataButtons);
+        }
+
+        private void btnSettings_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAndOpenNewView(new SettingsView());
         }
 
         #endregion

@@ -17,8 +17,14 @@
                 <RowDefinition/>
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
-            <Grid x:Name="MainGrid" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" ShowGridLines="True">
+            <Grid x:Name="MainGrid" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" ShowGridLines="True">
+                <Border Style="{StaticResource MyBorderMedium}" Margin="10,10,10,10" Grid.Row="0">
+                    <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource MyScrollViewer}" >
+                        <StackPanel Name="_spDisplay" Orientation="Vertical">
 
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
             </Grid>
             <Grid Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
                 <Grid.ColumnDefinitions>

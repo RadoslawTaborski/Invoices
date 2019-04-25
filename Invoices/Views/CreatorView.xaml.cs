@@ -90,7 +90,7 @@ namespace Invoices.Views
 
         private string GenerateInvoiceNumber()
         {
-            var pattern = $"^[0-9]+{@"\/"}{DateTime.Now:MM/yyyy}";
+            var pattern = $"^[0-9]+{@"\/"}{DateTime.Now:MM.yyyy}";
             pattern = pattern.Replace(".", "\\/");
             var rgx = new Regex(pattern);
             var numbers = new List<int>();

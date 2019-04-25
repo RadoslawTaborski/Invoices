@@ -17,7 +17,7 @@ namespace InvoicesService.WordGenerator
 
         public static void GenerateDocument(Invoice invoice)
         {
-            var path = ConfigurationManager.PathToDocuments();
+            var path = Service.Settings.PathToDocuments;
             var vendor = invoice.Vendor;
             var customer = invoice.Customer;
             var consumer = invoice.Consumer;

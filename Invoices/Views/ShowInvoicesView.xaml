@@ -7,6 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Style="{StaticResource MyGrid}">
-            
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource MyBorderMedium}" Margin="0,0,0,0" Grid.Row="0">
+            <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource MyScrollViewer}" >
+                <StackPanel Name="_spDisplay" Orientation="Vertical">
+
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </UserControl>

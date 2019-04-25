@@ -95,7 +95,7 @@ namespace Invoices.Views
             {
                 var border = new Border
                 {
-                    Style = (Style)FindResource("MyBorderMedium"),
+                    Style = (Style)FindResource("MyBorderLight"),
                     BorderThickness = new Thickness(1, 1, 1, 1),
                     Height = RefHeight,
                     Child = ItemToStackPanel(item),
@@ -170,7 +170,7 @@ namespace Invoices.Views
                     Width = width,
                     VerticalAlignment = VerticalAlignment.Stretch,
                 },
-                BorderBrush = (SolidColorBrush)FindResource("MyLight"),
+                BorderBrush = (SolidColorBrush)FindResource("MyLightGrey"),
                 BorderThickness = new Thickness(0, 0, 1, 0),
                 Margin = new Thickness(0, 0, 0, 0),
                 Height = RefHeight,
