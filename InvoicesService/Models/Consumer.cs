@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace InvoicesService.Models
 {
@@ -19,6 +20,17 @@ namespace InvoicesService.Models
         public List<Message> Validate()
         {
             var errors = new List<Message>();
+
+            if (CompanyName.Trim() == "" && (ConsumerName.Trim() == "" && ConsumerLastName.Trim() == ""))
+            {
+                errors.Add(new Message("Należy podać nazwe firmy lub imię i nazwisko"));
+            }
+            var rgx = new Regex("^[0-9]{10}");
+            var nip = Nip.Replace("-", "").Replace(" ", "").Trim();
+            if (rgx.IsMatch(nip) && Nip.Trim()!="")
+            {
+                errors.Add(new Message("Nip jest niepoprawny"));
+            }
 
             return errors;
         }

@@ -11,8 +11,8 @@ namespace InvoicesService
     {
         protected override void Seed(Context context)
         {
-            var unit1 = new UnitOfMeasure {Name = Resource.art};
-            var unit2 = new UnitOfMeasure {Name = Resource.runningMeter};
+            var unit1 = new UnitOfMeasure { Name = Resource.art};
+            var unit2 = new UnitOfMeasure { Name = Resource.runningMeter};
             var unit3 = new UnitOfMeasure { Name = Resource.squareMeter };
             var unit4 = new UnitOfMeasure { Name = Resource.kilogram };
             var unit5 = new UnitOfMeasure { Name = Resource.cubicMeter };
@@ -21,6 +21,7 @@ namespace InvoicesService
             context.UnitsOfMeasure.Add(unit2);
             context.UnitsOfMeasure.Add(unit3);
             context.UnitsOfMeasure.Add(unit4);
+            context.UnitsOfMeasure.Add(unit5);
 
             var currency1 = new Currency {Code = "PLN"};
             var currency2 = new Currency {Code = "EUR"};

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,8 +54,7 @@ namespace Invoices.Views
 
             using (var context = new Context())
             {
-                foreach (var item in context.Invoices)
-                {
+                foreach (var item in context.Invoices.Include(p => p.Consumer).Include(p => p.Vendor).Include(p=>p.DocumentData).Include(p=>p.Customer).Include(p=>p.Items).Include(p => p.PaymentData).Include(p => p.PaymentData.PaymentMethod).Include(p => p.Items.Select(c => c.Currency)).Include(p => p.Items.Select(c => c.Unit))) { 
                     var border = new Border
                     {
                         Style = (Style) FindResource("MyBorderLight"),
@@ -114,6 +114,11 @@ namespace Invoices.Views
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             var obj = (ButtonWithObject)sender;
+            var invoice = (Invoice) obj.Object;
+
+            var view = new GeneratorView(invoice);
+            ViewManager.AddUserControl(view);
+            ViewManager.OpenUserControl(view);
         }
 
         private Border CreateBorderWithLabel(string text, int width)

@@ -138,7 +138,7 @@ namespace Invoices
         #region InvoicesItems
         private void BtnCreatorView_Click(object sender, RoutedEventArgs e)
         {
-            CreateAndOpenNewView(new CreatorView());
+            CreateAndOpenNewView(new GeneratorView());
         }
 
         private void BtnInvoicesView_Click(object sender, RoutedEventArgs e)
@@ -312,7 +312,7 @@ namespace Invoices
 
             var columnDefinition1 = new ColumnDefinition()
             {
-                Width = new GridLength(ViewbarButtonWidth - 30),
+                Width = new GridLength((width - 30 < 0) ? 0 : width - 30),
             };
             var columnDefinition2 = new ColumnDefinition()
             {
@@ -320,7 +320,7 @@ namespace Invoices
             };
             var grid = new Grid
             {
-                Width = ViewbarButtonWidth - 10,
+                Width = (width - 10 < 0) ? 0 : width - 10,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 Background = (Brush) FindResource("Transparent"),
                 ColumnDefinitions =
@@ -407,10 +407,17 @@ namespace Invoices
         {
             _viewBarStockPanel.Children.Clear();
 
+            var barWidth = _viewBarStockPanel.ActualWidth;
+            var defaultButtonWidth = ViewbarButtonWidth;
+            if (_views.Count * defaultButtonWidth > barWidth)
+            {
+                defaultButtonWidth = (int)barWidth / _views.Count;
+            }
+
             foreach (var item in _views)
             {
                 var tmp = CreateViewBarButton($"btn{item}", (item as IRepresentative)?.RepresentativeName,
-                    ViewbarButtonWidth, item,
+                    defaultButtonWidth, item,
                     (item as IRepresentative)?.RepresentativeName == (selected as IRepresentative)?.RepresentativeName,
                     BtnView_Click);
                 _viewBarStockPanel.Children.Add(tmp);

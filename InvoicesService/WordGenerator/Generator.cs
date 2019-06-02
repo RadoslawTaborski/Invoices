@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using InvoicesService.Extensions;
 using InvoicesService.Models;
 using LiczbyNaSlowaNETCore;
 using Xceed.Words.NET;
@@ -319,7 +320,16 @@ namespace InvoicesService.WordGenerator
             p.Alignment = Alignment.right;
             p = table.Rows[i].Cells[3].Paragraphs.First().Append($"{row.Amount:0.00}", formattingWithoutBold);
             p.Alignment = Alignment.right;
-            p = table.Rows[i].Cells[4].Paragraphs.First().Append(row.Unit.Name, formattingWithoutBold);
+            if (row.Unit.Name.Any(char.IsDigit))
+            {
+                var sub = row.Unit.Name.SplitAndKeep(new[] {'2', '3'}, StringSplitOptions.RemoveEmptyEntries);
+                p = table.Rows[i].Cells[4].Paragraphs.First().Append(sub[0], formattingWithoutBold)
+                    .Append(sub[1], formattingWithoutBold).Script(Script.superscript);
+            }
+            else
+            {
+                p = table.Rows[i].Cells[4].Paragraphs.First().Append(row.Unit.Name, formattingWithoutBold);
+            }
             p.Alignment = Alignment.left;
             p = table.Rows[i].Cells[5].Paragraphs.First().Append($"{row.Total:0.00}", formattingWithoutBold);
             p.Alignment = Alignment.right;

@@ -52,7 +52,7 @@ namespace Invoices.Views
             Show();
         }
 
-        public string RepresentativeName { get; set; } = Properties.strings.ucCreateInvoiceItemView;
+        public string RepresentativeName { get; set; } = Properties.strings.ucItems;
 
         public override string ToString()
         {

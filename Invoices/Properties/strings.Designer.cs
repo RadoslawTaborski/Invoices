@@ -178,6 +178,15 @@ namespace Invoices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brak klientów w bazie.
+        /// </summary>
+        public static string customersError {
+            get {
+                return ResourceManager.GetString("customersError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to dd.MM.yyyy.
         /// </summary>
         public static string dateFormat {
@@ -466,6 +475,24 @@ namespace Invoices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Artykuły.
+        /// </summary>
+        public static string ucItems {
+            get {
+                return ResourceManager.GetString("ucItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dane główne.
+        /// </summary>
+        public static string ucMainData {
+            get {
+                return ResourceManager.GetString("ucMainData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ustawienia.
         /// </summary>
         public static string ucSettingsView {
@@ -507,6 +534,15 @@ namespace Invoices.Properties {
         public static string ucShowVendorsView {
             get {
                 return ResourceManager.GetString("ucShowVendorsView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brak sprzedawców w bazie.
+        /// </summary>
+        public static string vendorsError {
+            get {
+                return ResourceManager.GetString("vendorsError", resourceCulture);
             }
         }
         

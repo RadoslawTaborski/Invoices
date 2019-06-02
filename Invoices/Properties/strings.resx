@@ -270,4 +270,16 @@
   <data name="edit" xml:space="preserve">
     <value>Edycja:</value>
   </data>
+  <data name="ucItems" xml:space="preserve">
+    <value>Artykuły</value>
+  </data>
+  <data name="ucMainData" xml:space="preserve">
+    <value>Dane główne</value>
+  </data>
+  <data name="customersError" xml:space="preserve">
+    <value>Brak klientów w bazie</value>
+  </data>
+  <data name="vendorsError" xml:space="preserve">
+    <value>Brak sprzedawców w bazie</value>
+  </data>
 </root>

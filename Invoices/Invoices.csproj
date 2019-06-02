@@ -62,6 +62,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -138,6 +141,9 @@
     <Compile Include="Views\CreatorView.xaml.cs">
       <DependentUpon>CreatorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GeneratorView.xaml.cs">
+      <DependentUpon>GeneratorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
@@ -205,6 +211,10 @@
     <Page Include="Views\CreatorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GeneratorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
@@ -314,6 +324,9 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
