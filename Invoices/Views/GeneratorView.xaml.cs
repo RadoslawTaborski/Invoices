@@ -48,7 +48,7 @@ namespace Invoices.Views
             InitializeComponent();
             _views = new List<UserControl>();
             _invoice = invoice;
-            _mainUserControl = new CreatorView(_invoice);
+            _mainUserControl = new CreatorView(_invoice, false);
             AddUserControl(_mainUserControl);
             AddUserControl(new CreateInvoiceItemView(_invoice.Items));
             UpdateViewBar(_mainUserControl);
@@ -58,14 +58,16 @@ namespace Invoices.Views
 
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
-            _mainUserControl.Save();
+            var invoice = _mainUserControl.Save();
+            if ( invoice != null )
+            {
+                Generator.GenerateDocument(invoice);
+                Delegates.ChangeInInvoice?.Invoke();
 
-            Generator.GenerateDocument(_invoice);
-            Delegates.ChangeInInvoice?.Invoke();
-
-            var dialog = new MessageBox(Properties.strings.messageBoxStatement,
-                Properties.strings.documentsGenerated);
-            dialog.ShowDialog();
+                var dialog = new MessageBox(Properties.strings.messageBoxStatement,
+                    Properties.strings.documentsGenerated);
+                dialog.ShowDialog();
+            }
         }
 
         public override string ToString()

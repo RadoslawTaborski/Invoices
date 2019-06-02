@@ -29,7 +29,7 @@ namespace InvoicesService.Models
             }
             var rgx = new Regex("^[0-9]{10}");
             var nip = Nip.Replace("-", "").Replace(" ", "").Trim();
-            if (rgx.IsMatch(nip) && Nip.Trim() != "")
+            if (!rgx.IsMatch(nip) && Nip.Trim() != "")
             {
                 errors.Add(new Message("Nip jest niepoprawny"));
             }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using InvoicesService.Extensions;
 using InvoicesService.Models;
 using LiczbyNaSlowaNETCore;
@@ -33,7 +35,25 @@ namespace InvoicesService.WordGenerator
             {
                 var documentType = p.GetValue(null).ToString();
 
-                var doc = DocX.Create(path + $@"{documentData.Number.Replace('/', '-')}_{documentType}.docx");
+                var rgx = new Regex($"^{path.Replace("\\","\\\\")}{documentData.Number.Replace('/', '-')}_v\\d{{2}}_oryginał\\.docx$");
+                var tmp = Directory.GetFiles(path).Where(a => rgx.IsMatch(a)).ToList();
+                tmp.Sort();
+                var index = 1;
+                if (tmp.Count > 0)
+                {
+                    var str = tmp.Last();
+                    int pFrom = str.IndexOf("_v") + "_v".Length;
+                    int pTo = str.LastIndexOf("_oryginał");
+
+                    var result = str.Substring(pFrom, pTo - pFrom);
+                    index = int.Parse(result);
+                    if (documentType == DocumentType.ORIGINAL)
+                    {
+                        index++;
+                    }
+                }
+
+                var doc = DocX.Create(path + $@"{documentData.Number.Replace('/', '-')}_v{index:D2}_{documentType}.docx");
                 doc.MarginLeft = 50f;
                 doc.MarginRight = 50f;
                 doc.MarginTop = 50f;
@@ -119,7 +139,11 @@ namespace InvoicesService.WordGenerator
 
             GenerateVendorText(t.Rows[0].Cells[0], vendor);
             GenerateCustomerText(t.Rows[0].Cells[0], customer);
-            GenerateConsumerText(t.Rows[0].Cells[0], consumer);
+            if (consumer != null)
+            {
+                GenerateConsumerText(t.Rows[0].Cells[0], consumer);
+            }
+
             GenerateDocumentDataText(t.Rows[0].Cells[1], documentData, documentType);
             GeneratePaymentDataText(t.Rows[0].Cells[1], paymentData);
             doc.InsertTable(t);

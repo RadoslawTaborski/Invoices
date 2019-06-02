@@ -138,7 +138,15 @@ namespace Invoices
         #region InvoicesItems
         private void BtnCreatorView_Click(object sender, RoutedEventArgs e)
         {
-            CreateAndOpenNewView(new GeneratorView());
+            try
+            {
+                CreateAndOpenNewView(new GeneratorView());
+            }
+            catch (Exception ex)
+            {
+                var dialog = new MessageBox(Properties.strings.messageBoxStatement, ex.Message);
+                dialog.ShowDialog();
+            }
         }
 
         private void BtnInvoicesView_Click(object sender, RoutedEventArgs e)

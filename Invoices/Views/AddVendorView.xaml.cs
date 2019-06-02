@@ -28,6 +28,7 @@ namespace Invoices.Views
         public AddVendorView()
         {
             InitializeComponent();
+            _vendor = new Vendor();
         }
 
         public AddVendorView(Vendor vendor)

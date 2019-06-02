@@ -19,8 +19,8 @@ namespace Invoices
 
             if (errors.Count == 0)
             {
-                    ContextUpdate(validator, context);
-                    context.SaveChanges();
+                ContextUpdate(validator, context);
+                context.SaveChanges();
 
                 return true;
             }

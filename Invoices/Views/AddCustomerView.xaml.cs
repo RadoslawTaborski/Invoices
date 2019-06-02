@@ -28,6 +28,7 @@ namespace Invoices.Views
         public AddCustomerView()
         {
             InitializeComponent();
+            _customer = new Customer();
         }
 
         public AddCustomerView(Customer customer)

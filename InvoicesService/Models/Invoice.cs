@@ -73,6 +73,10 @@ namespace InvoicesService.Models
             {
                 errors.Add(new Message("Data wystawienia rachunku musi być zdefiniowana"));
             }
+            if (Items.Count == 0)
+            {
+                errors.Add(new Message("Brak dodanych artykułów"));
+            }
 
             return errors;
         }

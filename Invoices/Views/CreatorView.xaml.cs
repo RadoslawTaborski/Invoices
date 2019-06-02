@@ -17,26 +17,18 @@ namespace Invoices.Views
     public partial class CreatorView : IRepresentative
     {
         private Invoice _invoice;
-        private bool isNew;
+        private bool _isNew;
 
         private ObservableRangeCollection<Customer> _observableCustomers;
         private ObservableRangeCollection<Consumer> _observableConsumers;
         private ObservableRangeCollection<Vendor> _observableVendors;
         private ObservableRangeCollection<PaymentMethod> _observableMethods;
 
-        public CreatorView()
-        {
-            InitializeComponent();
-            _invoice = new Invoice();
-            isNew = true;
-            Init();
-        }
-
-        public CreatorView(Invoice invoice)
+        public CreatorView(Invoice invoice, bool isNew = true)
         {
             InitializeComponent();
             _invoice = invoice;
-            isNew = false;
+            _isNew = isNew;
             Init();
         }
 
@@ -125,13 +117,12 @@ namespace Invoices.Views
             return "CreatorView";
         }
 
-        public void Save()
+        public Invoice Save()
         {
-            Update(_invoice);
-
+            return Update(_invoice);
         }
 
-        public void Update(Invoice model)
+        public Invoice Update(Invoice model)
         {
             using (var context = new Context())
             {
@@ -172,15 +163,37 @@ namespace Invoices.Views
                     existingParent = model;
                 }
 
-                existingParent.Customer = context.Customers.FirstOrDefault(c => c.Id == ((Customer)_cbCustomer.SelectedItem).Id);
-                existingParent.Consumer = context.Consumers.FirstOrDefault(c => c.Id == ((Consumer)_cbConsumer.SelectedItem).Id);
-                existingParent.Vendor = context.Vendors.FirstOrDefault(c => c.Id == ((Vendor)_cbVendor.SelectedItem).Id);
+                if (_cbCustomer.SelectedItem != null)
+                {
+                    existingParent.Customer = context.Customers.FirstOrDefault(c => c.Id == ((Customer) _cbCustomer.SelectedItem).Id);
+                }
+
+                if (_cbConsumer.SelectedItem != null)
+                {
+                    existingParent.Consumer = context.Consumers.FirstOrDefault(c => c.Id == ((Consumer) _cbConsumer.SelectedItem).Id);
+                }
+                else
+                {
+                    existingParent.Consumer = null;
+                }
+
+                if (_cbVendor.SelectedItem != null)
+                {
+                    existingParent.Vendor = context.Vendors.FirstOrDefault(c => c.Id == ((Vendor) _cbVendor.SelectedItem).Id);
+                }
+
                 if (existingParent.PaymentData == null)
                 {
                     existingParent.PaymentData = new PaymentData();
                 }
 
-                existingParent.PaymentData.PaymentMethod = context.PaymentMethods.FirstOrDefault(c => c.Id == ((PaymentMethod)_cbPaymentMethod.SelectedItem).Id);
+                if (_cbPaymentMethod.SelectedItem != null)
+                {
+                    existingParent.PaymentData.PaymentMethod =
+                        context.PaymentMethods.FirstOrDefault(c =>
+                            c.Id == ((PaymentMethod) _cbPaymentMethod.SelectedItem).Id);
+                }
+
                 existingParent.PaymentData.PaymentDate = DateTime.ParseExact(_lblPaymentDate.Content.ToString(), Properties.strings.dateFormat, System.Globalization.CultureInfo.InvariantCulture);
                 if (existingParent.DocumentData == null)
                 {
@@ -191,14 +204,21 @@ namespace Invoices.Views
                 existingParent.DocumentData.Number = _lblNumber.Content.ToString();
                 existingParent.DocumentData.Place = _tbPlace.Text;
 
-                if (!isNew)
+                if (!_isNew)
                 {
                     context.Entry(existingParent.PaymentData).State = EntityState.Modified;
                     context.Entry(existingParent.DocumentData).State = EntityState.Modified;
                     context.Entry(existingParent).State = EntityState.Modified;
                 }
 
-                Saver.Save(existingParent, context);
+                if(Saver.Save(existingParent, context))
+                {
+                    return existingParent;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
