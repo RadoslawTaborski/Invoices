@@ -104,11 +104,11 @@ namespace Invoices.Views
 
                 if (!numbers.Any())
                 {
-                    return $"1/{DateTime.Now:MM/yyyy}".Replace(".", "/");
+                    return $"1/{DateTime.Now:MM/yyyy}".Replace(".", "/").Replace("-", "/");
                 }
 
                 var index = numbers.ElementAt(0) + 1;
-                return $"{index}/{DateTime.Now:MM/yyyy}".Replace(".", "/");
+                return $"{index}/{DateTime.Now:MM/yyyy}".Replace(".", "/").Replace("-","/");
             }
         }
 

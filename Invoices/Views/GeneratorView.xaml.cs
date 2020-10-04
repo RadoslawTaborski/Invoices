@@ -4,6 +4,7 @@ using InvoicesService.Models;
 using InvoicesService.WordGenerator;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Settings = InvoicesService.Settings;
 
 namespace Invoices.Views
 {
@@ -59,14 +61,35 @@ namespace Invoices.Views
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
             var invoice = _mainUserControl.Save();
-            if ( invoice != null )
+            try
             {
-                Generator.GenerateDocument(invoice);
-                Delegates.ChangeInInvoice?.Invoke();
+                if (invoice != null)
+                {
+                    Generator.GenerateDocument(invoice);
+                    Delegates.ChangeInInvoice?.Invoke();
 
-                var dialog = new MessageBox(Properties.strings.messageBoxStatement,
-                    Properties.strings.documentsGenerated);
-                dialog.ShowDialog();
+                    var dialog = new MessageBox(Properties.strings.messageBoxStatement,
+                        Properties.strings.documentsGenerated);
+                    dialog.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                using (var writer = new StreamWriter($"{Service.Settings.PathToDocuments}logs.txt", true))
+                {
+                    writer.WriteLine("-----------------------------------------------------------------------------");
+                    writer.WriteLine("Date : " + DateTime.Now.ToString());
+                    writer.WriteLine();
+
+                    while (ex != null)
+                    {
+                        writer.WriteLine(ex.GetType().FullName);
+                        writer.WriteLine("Message : " + ex.Message);
+                        writer.WriteLine("StackTrace : " + ex.StackTrace);
+
+                        ex = ex.InnerException;
+                    }
+                }
             }
         }
 

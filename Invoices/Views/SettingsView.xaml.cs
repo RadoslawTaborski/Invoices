@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -49,6 +50,16 @@ namespace Invoices.Views
         public override string ToString()
         {
             return "Settings";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (var dbContext = new Context())
+            {
+                dbContext.Database.Delete();
+            }
+
+            Database.SetInitializer(new DbInitializer());
         }
     }
 }
